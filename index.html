@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Process Management Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Process Management Simulation System</h1>
+    <p>An Operating System Project for Process Scheduling and PCB Management</p>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>Add Process</h2>
+
+      <div class="form-grid">
+        <div>
+          <label>Process ID</label>
+          <input type="text" id="pid" placeholder="P1" />
+        </div>
+
+        <div>
+          <label>Arrival Time</label>
+          <input type="number" id="arrivalTime" placeholder="0" />
+        </div>
+
+        <div>
+          <label>Burst Time</label>
+          <input type="number" id="burstTime" placeholder="5" />
+        </div>
+
+        <div>
+          <label>Priority</label>
+          <input type="number" id="priority" placeholder="1" />
+        </div>
+      </div>
+
+      <button onclick="addProcess()">Add Process</button>
+      <button onclick="clearAll()" class="danger">Clear All</button>
+    </section>
+
+    <section class="card">
+      <h2>Process State Diagram</h2>
+
+      <div class="state-box">
+        <div>New</div>
+        <span>→</span>
+        <div>Ready</div>
+        <span>→</span>
+        <div>Running</div>
+        <span>→</span>
+        <div>Waiting</div>
+        <span>→</span>
+        <div>Terminated</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Ready Queue</h2>
+      <div id="readyQueue" class="queue">
+        No process added yet.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Process Control Block Table</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>PID</th>
+            <th>State</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+            <th>Priority</th>
+            <th>Completion Time</th>
+            <th>Waiting Time</th>
+            <th>Turnaround Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="processTable">
+          <tr>
+            <td colspan="9">No process available.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>CPU Scheduling</h2>
+
+      <div class="scheduler">
+        <select id="algorithm">
+          <option value="fcfs">First Come First Serve</option>
+          <option value="sjf">Shortest Job First</option>
+          <option value="priority">Priority Scheduling</option>
+          <option value="rr">Round Robin</option>
+        </select>
+
+        <input type="number" id="timeQuantum" placeholder="Time Quantum for RR" />
+
+        <button onclick="runScheduling()">Run Scheduling</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Gantt Chart</h2>
+      <div id="ganttChart" class="gantt">
+        No scheduling result yet.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Final Result</h2>
+
+      <div class="result-box">
+        <p><strong>Average Waiting Time:</strong> <span id="avgWT">0</span></p>
+        <p><strong>Average Turnaround Time:</strong> <span id="avgTAT">0</span></p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Project Description</h2>
+
+      <p>
+        The Process Management Simulation System is an Operating System based project.
+        It demonstrates how an operating system creates, schedules, manages, blocks,
+        resumes, and terminates processes. The project also shows Process Control Block,
+        Ready Queue, CPU Scheduling, Gantt Chart, Waiting Time, and Turnaround Time.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Operating System Course Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
